@@ -1,0 +1,38 @@
+@page { size: A4; margin: 18mm 16mm; }
+
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  margin: 0;
+  color: #1f2430;
+  font: 10.5pt/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.doc-header { padding-bottom: 10pt; margin-bottom: 14pt; border-bottom: 2pt solid #4f46e5; }
+.doc-title { margin: 0 0 4pt; font-size: 22pt; line-height: 1.2; font-weight: 700; overflow-wrap: anywhere; }
+.doc-meta { margin: 0; color: #5b6275; font-size: 9.5pt; }
+.doc-description { margin: 8pt 0 0; color: #3b4254; white-space: pre-wrap; overflow-wrap: anywhere; }
+.doc-empty { color: #7a8194; font-style: italic; }
+
+.row {
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  gap: 12pt;
+  padding: 7pt 0;
+  border-bottom: 0.5pt solid #e3e6ee;
+  break-inside: avoid;
+}
+.row-label { font-weight: 600; color: #3b4254; overflow-wrap: anywhere; }
+.row-value { overflow-wrap: anywhere; }
+.row-value > div { white-space: pre-wrap; }
+.row-value-empty { color: #9aa1b2; }
+.row-note { margin-top: 2pt; color: #7a8194; font-size: 8.5pt; font-style: italic; }
+
+.sec { margin: 16pt 0 4pt; font-weight: 700; color: #1f2430; break-after: avoid; overflow-wrap: anywhere; }
+.sec-xl { font-size: 18pt; padding-bottom: 3pt; border-bottom: 1pt solid #c9cee0; }
+.sec-lg { font-size: 15pt; }
+.sec-md { font-size: 12.5pt; }
+.sec-sm { font-size: 11pt; }
+.sec-xs { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.08em; color: #5b6275; }
+
+.doc-footer { margin-top: 22pt; color: #9aa1b2; font-size: 8pt; text-align: center; }
