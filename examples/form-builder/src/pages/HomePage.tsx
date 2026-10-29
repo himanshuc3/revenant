@@ -50,10 +50,6 @@ export function HomePage() {
         </Typography.Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => {
           // Send a log before throwing the error
-        Sentry.logger.info('User triggered test error', {
-          action: 'test_error_button_click',
-        });
-        throw new Error('This is your first error!');
           navigate('/builder/new')
         }}>
           New Template
