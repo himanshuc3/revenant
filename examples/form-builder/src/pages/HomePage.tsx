@@ -1,11 +1,13 @@
 import { DeleteOutlined, EditOutlined, FileAddOutlined, PlusOutlined } from '@ant-design/icons';
 import { Alert, App as AntApp, Button, Card, Col, Empty, Popconfirm, Row, Space, Tag, Typography } from 'antd';
+import * as Sentry from '@sentry/react'
 import { Link, useNavigate } from 'react-router-dom';
 import { createDraftInstance } from '../domain/instance';
 import type { Template } from '../domain/template';
 import { modelOf } from '../fields/models';
 import { repository, useInstances, useTemplates } from '../storage';
 import { StorageError } from '../storage/repository';
+
 
 /** Section headers are layout, not data, so they don't count toward "number of fields". */
 export function countDataFields(template: Template): number {
@@ -46,7 +48,14 @@ export function HomePage() {
         <Typography.Title level={3} style={{ margin: 0 }}>
           Templates
         </Typography.Title>
-        <Button type="primary" icon={<PlusOutlined />} onClick={() => navigate('/builder/new')}>
+        <Button type="primary" icon={<PlusOutlined />} onClick={() => {
+          // Send a log before throwing the error
+        Sentry.logger.info('User triggered test error', {
+          action: 'test_error_button_click',
+        });
+        throw new Error('This is your first error!');
+          navigate('/builder/new')
+        }}>
           New Template
         </Button>
       </Space>

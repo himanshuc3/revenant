@@ -1,8 +1,13 @@
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import react from '@vitejs/plugin-react';
 import { configDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), sentryVitePlugin({
+    org: "a-bp",
+    project: "revenant"
+  })],
+
   test: {
     environment: 'jsdom',
     // Playwright specs live in e2e/ and run with `npm run e2e`.
@@ -12,4 +17,8 @@ export default defineConfig({
     // antd styles are irrelevant to tests, but the print stylesheet is inlined into the exported document.
     css: { include: [/print\.css/] },
   },
+
+  build: {
+    sourcemap: true
+  }
 });
