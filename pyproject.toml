@@ -1,0 +1,28 @@
+[project]
+name = "revenant"
+version = "0.1.0"
+description = "Remembers resolved Sentry incidents and warns on PRs that risk bringing one back."
+requires-python = ">=3.12"
+dependencies = [
+  "openai>=1.50",
+  "httpx>=0.27",
+  "psycopg[binary]>=3.2",
+  "pgvector>=0.3",
+  "pydantic>=2.8",
+  "typer>=0.12",
+  "fastembed>=0.4",
+  "python-dotenv>=1.0",
+]
+
+[project.scripts]
+revenant = "revenant.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["revenant"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
